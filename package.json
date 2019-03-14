@@ -58,13 +58,18 @@
         "bootstrap-scss": "^4.3.1",
         "electron-compile": "^6.4.4",
         "electron-squirrel-startup": "^1.0.0",
+        "element-resize-event": "^3.0.3",
         "graphql": "^14.1.1",
         "graphql-tag": "^2.10.1",
+        "lodash.debounce": "^4.0.8",
+        "prop-types": "^15.7.2",
         "qrcode.react": "^0.9.3",
         "react": "^16.8.4",
         "react-apollo": "https://github.com/dhl1402/react-apollo.git#hooks",
         "react-bootstrap": "^1.0.0-beta.5",
+        "react-custom-scrollbars": "^4.2.1",
         "react-dom": "^16.8.4",
+        "react-icons": "^3.5.0",
         "react-scripts": "2.1.8"
     },
     "devDependencies": {

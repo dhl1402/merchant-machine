@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloProvider } from 'react-apollo';
-import 'bootstrap-scss';
 import * as serviceWorker from './serviceWorker';
 
 import App from './App';
 
 import client from './apollo/client';
+
+import './index.scss';
 
 /* eslint-disable react/jsx-filename-extension */
 ReactDOM.render(

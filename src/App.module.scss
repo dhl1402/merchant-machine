@@ -1,23 +1,33 @@
 .App {
-    text-align: center;
-     :global {
-        .App-logo {
-            animation: App-logo-spin infinite 20s linear;
-            height: 40vmin;
-            pointer-events: none;
+    padding: 0.25rem;
+    background-color: #212122;
+    @media screen and (max-width: 480px) {
+        flex-direction: column;
+         :global {
+            .main {
+                flex: unset !important;
+            }
+            .list-transaction {
+                width: 100% !important;
+                flex: 1;
+            }
         }
-        .App-header {
-            background-color: #282c34;
-            min-height: 100vh;
+    }
+     :global {
+        .main {
             display: flex;
-            flex-direction: column;
+            flex: 1;
             align-items: center;
             justify-content: center;
-            font-size: calc(10px + 2vmin);
-            color: white;
+            padding: 0.5rem;
         }
-        .App-link {
-            color: #61dafb;
+        .qrcode {
+            padding: 1rem;
+            background-color: #FFF;
+            border-radius: 3px;
+        }
+        .list-transaction {
+            width: 22rem;
         }
     }
 }
