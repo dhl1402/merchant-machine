@@ -1,10 +1,25 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, globalShortcut } from 'electron';
+import fs from 'fs';
+
+import { CONFIG_SAVE_PATH } from '../constants/configs';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line
   // eslint-disable-line global-require
   app.quit();
 }
+
+const registerShortcut = () => {
+  // restart and remove config.json
+  const key = process.platform === 'darwin' ? 'Ctrl+Cmd+C' : 'Ctrl+Alt+C';
+  globalShortcut.register(key, () => {
+    if (fs.existsSync(CONFIG_SAVE_PATH)) {
+      fs.unlinkSync(CONFIG_SAVE_PATH);
+    }
+    app.relaunch();
+    app.quit(0);
+  });
+};
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -40,7 +55,10 @@ const createWindow = () => {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready', () => {
+  createWindow();
+  registerShortcut();
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {

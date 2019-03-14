@@ -4,7 +4,7 @@ import { Row, Col, ListGroup, Card, Media, Button, Badge } from 'react-bootstrap
 import { Scrollbars } from 'react-custom-scrollbars';
 import classNames from 'classnames';
 
-import { INIT, WAITING, RECEIVED, REFUNDED } from '../../constants/transactionStatus';
+import { INIT, WAITING, RECEIVED, REFUNDED } from '@/constants/transactionStatus';
 
 import styles from './ListTransactions.module.scss';
 

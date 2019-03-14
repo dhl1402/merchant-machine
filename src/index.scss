@@ -35,8 +35,9 @@ html {
 }
 
 #root {
-    height: 100vh;
-    min-height: 100vh;
+    >div {
+        min-height: 100vh;
+    }
 }
 
 .shadow {

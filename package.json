@@ -6,8 +6,8 @@
     "main": "src/main/index.js",
     "scripts": {
         "analyze": "source-map-explorer build/static/js/main.*",
-        "build-react": "react-scripts build",
-        "start": "concurrently \"react-scripts start\" \"NODE_ENV=development electron-forge start\"",
+        "build-react": "react-app-rewired build",
+        "start": "concurrently \"react-app-rewired start\" \"NODE_ENV=development electron-forge start\"",
         "package": "yarn build-react && NODE_ENV=production electron-forge package",
         "make": "yarn build-react && NODE_ENV=production electron-forge make",
         "lint": "eslint src --color"
@@ -70,22 +70,26 @@
         "react-custom-scrollbars": "^4.2.1",
         "react-dom": "^16.8.4",
         "react-icons": "^3.5.0",
-        "react-scripts": "2.1.8"
+        "react-scripts": "2.1.8",
+        "yup": "^0.26.10"
     },
     "devDependencies": {
         "babel-plugin-transform-async-to-generator": "^6.24.1",
         "babel-preset-env": "^1.7.0",
         "babel-preset-react": "^6.24.1",
         "concurrently": "^4.1.0",
+        "customize-cra": "^0.2.12",
         "electron": "^4.0.6",
         "electron-forge": "^5.2.4",
         "electron-prebuilt-compile": "4.0.0",
         "eslint-config-airbnb": "^15",
+        "eslint-import-resolver-alias": "^1.1.2",
         "eslint-plugin-import": "^2",
         "eslint-plugin-jsx-a11y": "^5",
         "eslint-plugin-react": "^7",
         "node-sass": "^4.11.0",
         "npm-run-all": "^4.1.5",
+        "react-app-rewired": "^2.1.1",
         "source-map-explorer": "^1.7.0"
     },
     "browserslist": [
