@@ -27,7 +27,11 @@
             border-radius: 3px;
         }
         .list-transaction {
-            width: 22rem;
+            display: flex;
+            flex-direction: column;
+            &>div {
+                flex: 1;
+            }
         }
     }
 }

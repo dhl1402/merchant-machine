@@ -11,7 +11,8 @@
         "react/require-default-props": 0,
         "import/prefer-default-export": 0,
         "no-alert": 0,
-        "import/first": 0
+        "import/first": 0,
+        "camelcase": 0
     },
     "globals": {
         "window": true,

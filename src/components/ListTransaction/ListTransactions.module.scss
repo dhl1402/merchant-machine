@@ -1,14 +1,23 @@
 .ListTransaction {
     height: 100%;
     display: flex;
+    width: 22rem;
     flex-direction: column;
      :global {
         .header {
+            display: flex;
+            justify-content: center;
+            position: relative;
             background-color: #307CF6;
             color: #FFF;
             border-radius: 3px;
             text-align: center;
-            padding: 6px;
+            padding: 10px;
+            .refresh-button {
+                position: absolute;
+                right: 10px;
+                top: 5px;
+            }
         }
         .scrollbar {
             flex: 1;
