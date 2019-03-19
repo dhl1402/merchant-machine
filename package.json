@@ -3,7 +3,7 @@
     "productName": "merchant-machine",
     "version": "1.0.0",
     "description": "Merchant machine",
-    "main": "src/main/index.js",
+    "main": "src/main/main.js",
     "scripts": {
         "analyze": "source-map-explorer build/static/js/main.*",
         "build-react": "react-app-rewired build",
@@ -75,9 +75,11 @@
         "react-bootstrap": "^1.0.0-beta.5",
         "react-custom-scrollbars": "^4.2.1",
         "react-dom": "^16.8.4",
+        "react-dragscroll": "^2.0.1",
         "react-icons": "^3.5.0",
         "react-scripts": "2.1.8",
         "react-spinners": "^0.5.3",
+        "socket.io-client": "^2.2.0",
         "yup": "^0.26.10"
     },
     "devDependencies": {

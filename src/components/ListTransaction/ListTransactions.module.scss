@@ -1,8 +1,7 @@
 .ListTransaction {
-    height: 100%;
     display: flex;
-    width: 22rem;
     flex-direction: column;
+    padding: 0.5rem;
      :global {
         .header {
             display: flex;
@@ -20,6 +19,7 @@
             }
         }
         .scrollbar {
+            min-height: 300px;
             flex: 1;
             .staff-avatar {
                 width: 3rem;

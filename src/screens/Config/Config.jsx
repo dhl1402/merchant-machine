@@ -30,21 +30,23 @@ const Config = () => {
         properties: ['openFile'],
       },
       (files) => {
-        const filePath = (files || [files])[0];
-        if (!filePath) {
-          return;
-        }
-        if (!fs.existsSync(filePath)) {
-          alert('File not found');
-          return;
-        }
-        const configData = window.require(filePath);
-        if (configSchema.isValidSync(configData)) {
+        try {
+          const filePath = (files || [files])[0];
+          if (!filePath) {
+            return;
+          }
+          if (!fs.existsSync(filePath)) {
+            throw new Error('File not found');
+          }
+          const configData = window.require(filePath);
+          if (!configSchema.isValidSync(configData)) {
+            throw new Error('File config invalid');
+          }
           fs.writeFileSync(CONFIG_SAVE_PATH, JSON.stringify(configData));
           app.relaunch();
           app.quit(0);
-        } else {
-          alert('File config invalid');
+        } catch (e) {
+          alert(e.message);
         }
       },
     );

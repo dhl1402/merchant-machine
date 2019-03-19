@@ -4,5 +4,5 @@ const { override, addWebpackAlias, addBabelPlugins } = require('customize-cra');
 
 module.exports = override(
   addWebpackAlias({ '@': path.resolve(__dirname, 'src') }),
-  addBabelPlugins('emotioni'),
+  addBabelPlugins('emotion'),
 );

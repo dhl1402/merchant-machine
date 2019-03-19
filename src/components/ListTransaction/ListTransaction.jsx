@@ -15,10 +15,12 @@ import styles from './ListTransactions.module.scss';
 
 const ListTransaction = ({ className }) => {
   const [processingTrans, setProcessingTrans] = useState([]);
-  const { data, loading, error, networkStatus, refetch, hasMore, fetchMore } = useTransactionsQuery({
-    offset: 0,
-    limit: 20,
-  });
+  const { data, loading, error, networkStatus, refetch, hasMore, fetchMore } = useTransactionsQuery(
+    {
+      offset: 0,
+      limit: 20,
+    },
+  );
   const transactions = data.data || [];
 
   const [doneTransaction] = useDoneTransactionMutation({
@@ -60,7 +62,9 @@ const ListTransaction = ({ className }) => {
   const renderListTransaction = () => {
     if (error) {
       return (
-        <Alert className="m-0" variant="danger">{error.message || 'Đã có lỗi xảy ra'}</Alert>
+        <Alert className="m-0" variant="danger">
+          {error.message || 'Đã có lỗi xảy ra'}
+        </Alert>
       );
     }
 
@@ -74,7 +78,9 @@ const ListTransaction = ({ className }) => {
 
     if (transactions.length === 0) {
       return (
-        <Alert className="m-0" variant="secondary">Chưa có giao dịch nào</Alert>
+        <Alert className="m-0" variant="secondary">
+          Chưa có giao dịch nào
+        </Alert>
       );
     }
 
@@ -83,11 +89,7 @@ const ListTransaction = ({ className }) => {
         <Card.Body>
           <Card.Title>
             <Media>
-              <img
-                className="staff-avatar mr-3"
-                src={get(t, 'staff.avatar')}
-                alt="avatar"
-              />
+              <img className="staff-avatar mr-3" src={get(t, 'staff.avatar')} alt="avatar" />
               <Media.Body className="align-self-center">
                 <h5 className="mb-1">{get(t, 'staff.name', 'N/A')}</h5>
                 {rendeStatusBadge(t.status)}
@@ -96,7 +98,7 @@ const ListTransaction = ({ className }) => {
           </Card.Title>
           <ListGroup variant="flush">
             {(t.products || []).map(p => (
-              <ListGroup.Item key={p.name}>
+              <ListGroup.Item key={p.id}>
                 <Row>
                   <Col className="d-flex">
                     <div className="product-name mr-1">p.name</div>
@@ -125,10 +127,7 @@ const ListTransaction = ({ className }) => {
           </ListGroup>
         </Card.Body>
         <Card.Footer className="text-right">
-          <Button
-            disabled={processingTrans.includes(t.id)}
-            onClick={() => onDoneTransaction(t)}
-          >
+          <Button disabled={processingTrans.includes(t.id)} onClick={() => onDoneTransaction(t)}>
             Hoàn thành
           </Button>
         </Card.Footer>
@@ -145,13 +144,12 @@ const ListTransaction = ({ className }) => {
         </Button>
       </div>
       <Scrollbars
-        noScrollX
+        noscrollx="true"
         className="scrollbar"
         style={{ width: '100%', height: '100%' }}
         onScroll={({ target: { scrollTop, scrollHeight, clientHeight } }) => {
           const bottomReached = scrollTop === scrollHeight - clientHeight;
           if (bottomReached && hasMore && !loading) {
-            alert('fetch');
             fetchMore();
           }
         }}

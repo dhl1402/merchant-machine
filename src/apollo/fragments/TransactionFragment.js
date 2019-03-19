@@ -8,6 +8,7 @@ export default gql`
     date
     status
     products {
+      id
       name
       price
       quantity

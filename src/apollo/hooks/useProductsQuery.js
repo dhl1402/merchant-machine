@@ -2,7 +2,7 @@ import { get } from 'lodash';
 import { useQuery } from 'react-apollo';
 import update from 'immutability-helper';
 
-import TransactionsQuery from '../queries/TransactionsQuery';
+import ProductsQuery from '../queries/ProductsQuery';
 
 export default ({
   offset = 0,
@@ -12,7 +12,7 @@ export default ({
   ...params
 }) => {
   const queryResult = useQuery({
-    query: TransactionsQuery,
+    query: ProductsQuery,
     variables: { offset, limit },
     notifyOnNetworkStatusChange: true,
     onCompleted,
@@ -20,22 +20,22 @@ export default ({
     ...params,
   });
 
-  const total = get(queryResult.data, 'allTransaction.total', 0);
-  const listTrans = get(queryResult.data, 'allTransaction.data', []) || [];
-  const hasMore = listTrans.length < total;
-  const data = get(queryResult.data, 'allTransaction', {});
+  const total = get(queryResult.data, 'allProduct.total', 0);
+  const listProduct = get(queryResult.data, 'allProduct.data', []) || [];
+  const hasMore = listProduct.length < total;
+  const data = get(queryResult.data, 'allProduct', {});
 
   const fetchMore = () => {
     queryResult.fetchMore({
-      variables: { offset: listTrans.length },
+      variables: { offset: listProduct.length },
       updateQuery: (prevData, { fetchMoreResult }) => {
         if (!fetchMoreResult) {
           return prevData;
         }
         return update(prevData, {
-          allTransaction: {
-            total: { $set: fetchMoreResult.allTransaction.total },
-            data: { $push: fetchMoreResult.allTransaction.data },
+          allProduct: {
+            total: { $set: fetchMoreResult.allProduct.total },
+            data: { $push: fetchMoreResult.allProduct.data },
           },
         });
       },

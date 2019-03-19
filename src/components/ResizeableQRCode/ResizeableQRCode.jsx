@@ -2,7 +2,7 @@ import React, { useState, useImperativeHandle, forwardRef } from 'react';
 import { func, string } from 'prop-types';
 import QRCode from 'qrcode.react';
 
-const ResizeableQRCode = ({ getSize, value, className }, ref) => {
+const ResizeableQRCode = forwardRef(({ getSize, value, className }, ref) => {
   /* eslint-disable no-unused-vars */
   const [_, forceUpdate] = useState();
   useImperativeHandle(ref, () => ({
@@ -10,7 +10,7 @@ const ResizeableQRCode = ({ getSize, value, className }, ref) => {
   }));
 
   return <QRCode size={getSize()} value={value} className={className} />;
-};
+});
 
 ResizeableQRCode.propTypes = {
   getSize: func.isRequired,
@@ -18,4 +18,6 @@ ResizeableQRCode.propTypes = {
   className: string,
 };
 
-export default forwardRef(ResizeableQRCode);
+ResizeableQRCode.displayName = 'ResizeableQRCode';
+
+export default ResizeableQRCode;

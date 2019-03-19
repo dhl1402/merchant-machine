@@ -30,11 +30,12 @@ export default ({ onCompleted = () => {}, onError = defaultOnError, ...params } 
       Object.keys(vars).sort().forEach((key) => { obj[key] = vars[key]; });
       const args = Object.keys(obj).map((k) => { return obj[k]; });
       const hash = crypto.createHash('sha256').update(args.join('') + configs.SECRET_KEY_MACHINE).digest('hex');
-      const { access_token, refresh_token } = await client.mutate({
+      const response = await client.mutate({
         mutation: InitMutation,
         variables: { ...vars, hash },
         ...params,
       });
+      const { access_token, refresh_token } = response.data.init;
       localStorage.setItem('access_token', access_token);
       localStorage.setItem('refresh_token', refresh_token);
       onCompleted();

@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
+// import io from 'socket.io-client';
 
-import Main from '@/screens/Main';
-import Config from '@/screens/Config';
-import Loading from '@/screens/Loading';
+import { Main, Config, Loading } from '@/screens';
 
 import configs from '@/constants/configs';
 import { useInitMutation, useRefreshMutation } from '@/apollo';
