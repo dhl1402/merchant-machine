@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-// import io from 'socket.io-client';
+import React, { useRef, useEffect } from 'react';
+import io from 'socket.io-client';
 
 import { Main, Config, Loading } from '@/screens';
 
@@ -9,6 +9,7 @@ import { useInitMutation, useRefreshMutation } from '@/apollo';
 const schedule = window.require('node-schedule');
 
 const App = () => {
+  const socket = useRef();
   const [init, { loading }] = useInitMutation();
   const [refreshToken] = useRefreshMutation();
 
@@ -24,6 +25,15 @@ const App = () => {
       if (rToken) {
         refreshToken(rToken);
       }
+    });
+  }, []);
+
+  useEffect(() => {
+    socket.current = io(configs.HOST_SOCKET, {
+      path: configs.PATH_SOCKET,
+      query: `access_token=${localStorage.getItem('access_token')}`,
+      forceNew: true,
+      timeout: 5000,
     });
   }, []);
 

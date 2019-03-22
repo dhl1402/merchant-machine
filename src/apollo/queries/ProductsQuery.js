@@ -10,6 +10,8 @@ export default gql`
         id
         name
         price
+        qrcode_data
+        image_url
       }
     }
   }

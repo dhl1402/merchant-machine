@@ -87,7 +87,7 @@ const ListProduct = ({ className }) => {
       >
         <img
           className="product-image"
-          src={p.image || placeholder}
+          src={p.image_url || placeholder}
           alt="product"
         />
         <div className="product-title">
@@ -109,7 +109,7 @@ const ListProduct = ({ className }) => {
           <ResizeableQRCode
             ref={qrCode}
             getSize={getQRCodeSize}
-            value={selectedProduct.id}
+            value={selectedProduct.qrcode_data}
             className="qrcode"
           />
         </div>
