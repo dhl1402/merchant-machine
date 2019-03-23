@@ -27,7 +27,8 @@
                 ],
                 "linux": [
                     "deb",
-                    "rpm"
+                    "rpm",
+                    "appimage"
                 ]
             },
             "electronPackagerConfig": {
