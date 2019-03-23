@@ -26,9 +26,7 @@ const App = () => {
         refreshToken(rToken);
       }
     });
-  }, []);
 
-  useEffect(() => {
     socket.current = io(configs.HOST_SOCKET, {
       path: configs.PATH_SOCKET,
       query: `access_token=${localStorage.getItem('access_token')}`,
