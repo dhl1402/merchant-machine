@@ -29,7 +29,7 @@ const ListTransaction = ({ className }) => {
   });
 
   const onDoneTransaction = async ({ id, staff }) => {
-    if (!window.confirm(`Xác nhận hoàn thành giao dịch với ${staff.name}?`)) {
+    if (!window.confirm(`Xác nhận hoàn thành giao dịch với ${staff.name || 'N/A'}?`)) {
       return;
     }
     setProcessingTrans(processingTrans.concat(id));
@@ -101,7 +101,7 @@ const ListTransaction = ({ className }) => {
               <ListGroup.Item key={p.id}>
                 <Row>
                   <Col className="d-flex">
-                    <div className="product-name mr-1">p.name</div>
+                    <div className="product-name mr-1">{p.name}</div>
                     <div>x{p.quantity}</div>
                   </Col>
                   <Col className="text-right">{p.price}</Col>
