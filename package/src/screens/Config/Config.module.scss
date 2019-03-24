@@ -1,0 +1,16 @@
+.Config {
+    display: flex;
+    height: 100%;
+    padding: 0.25rem;
+    background-color: #212122;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+     :global {
+        .logo {
+            height: 16rem;
+            width: 16rem;
+            margin-bottom: 24px;
+        }
+    }
+}

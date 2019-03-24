@@ -1,0 +1,45 @@
+@import "~bootstrap-scss/bootstrap.scss";
+
+/* ---------------------Customize------------------------ */
+
+* {
+    font-family: "Comic Sans MS", cursive, sans-serif
+}
+
+html {
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 300px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+#root {
+    >div {
+        min-height: 100vh;
+    }
+}
+
+.shadow {
+    box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
