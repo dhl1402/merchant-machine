@@ -1,6 +1,8 @@
 const { app, BrowserWindow, globalShortcut } = require('electron');
 const fs = require('fs');
+const url = require('url');
 
+const path = require('path');
 const isDev = require('electron-is-dev');
 
 const { CONFIG_SAVE_PATH } = require('../constants/configs');
@@ -39,8 +41,17 @@ const createWindow = () => {
     mainWindow.loadURL('http://localhost:3000');
     mainWindow.webContents.openDevTools();
   } else {
-    mainWindow.loadURL(`file://${__dirname}/../../build/index.html`);
+    mainWindow.loadURL(
+      url.format({
+        pathname: `${__dirname}/..build/index.html`,
+        protocol: 'file:',
+        slashes: true,
+      }),
+    );
   }
+
+  // Open the DevTools.
+  mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {

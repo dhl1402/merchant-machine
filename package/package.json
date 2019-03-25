@@ -8,13 +8,12 @@
         "analyze": "source-map-explorer build/static/js/main.*",
         "lint": "eslint src --color",
         "build-react": "react-app-rewired build",
-        "prevbuild-react": "rm -rf build && rm-rf dist",
         "start-react": "react-app-rewired start",
         "start": "concurrently \"BROWSER=none yarn start-react\" \"wait-on http://localhost:3000 && electron .\"",
+        "pack": "yarn build-react && build --em.main=src/main/main.js",
         "dist": "yarn build-react && electron-builder -c.extraMetadata.main=src/main/main.js",
-        "dist-appimage": "yarn build-react && electron-builder -c.extraMetadata.main=src/main/main.js --linux appImage",
-        "dist-nsis": "yarn build-react && electron-builder -c.extraMetadata.main=src/main/main.js --win --ia32 nsis",
-        "release": "build"
+        "dist-appimage": "yarn build-react && electron-builder --linux appImage",
+        "dist-nsis": "yarn build-react && electron-builder --win --ia32 nsis"
     },
     "keywords": [],
     "author": "DHL",
