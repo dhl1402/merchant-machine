@@ -1,7 +1,7 @@
 {
     "name": "merchant-machine",
     "productName": "merchant-machine",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Merchant machine",
     "main": "src/main/main.js",
     "scripts": {
@@ -14,12 +14,16 @@
         "dist": "yarn build-react && electron-builder -c.extraMetadata.main=src/main/main.js",
         "dist-appimage": "yarn build-react && electron-builder -c.extraMetadata.main=src/main/main.js --linux appImage",
         "dist-nsis": "yarn build-react && electron-builder -c.extraMetadata.main=src/main/main.js --win --ia32 nsis",
-        "release": "build"
+        "release": "GH_TOKEN=eed28f94a4c8a8d197d49b28af6951c3c253022a build -c.extraMetadata.main=src/main/main.js"
     },
     "keywords": [],
     "author": "DHL",
     "license": "MIT",
     "homepage": "./",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dhl1402/merchant-machine.git"
+    },
     "build": {
         "appId": "com.appota.merchant",
         "files": [
@@ -35,22 +39,25 @@
         "appImage": {
             "artifactName": "ACheckin Linux",
             "systemIntegration": "doNotAsk",
-            "publish": [
-                "github"
-            ]
+            "publish": {
+                "provider": "github",
+                "private": true
+            }
         },
         "mac": {
             "target": "dmg",
-            "publish": [
-                "github"
-            ]
+            "publish": {
+                "provider": "github",
+                "private": true
+            }
         },
         "nsis": {
             "artifactName": "ACheckin.${ext}",
             "createDesktopShortcut": "always",
-            "publish": [
-                "github"
-            ]
+            "publish": {
+                "provider": "github",
+                "private": true
+            }
         },
         "compression": "store"
     },
@@ -65,7 +72,9 @@
         "crypto": "^1.0.1",
         "electron-compile": "^6.4.4",
         "electron-is-dev": "^1.0.1",
+        "electron-log": "^3.0.3",
         "electron-squirrel-startup": "^1.0.0",
+        "electron-updater": "^4.0.6",
         "element-resize-event": "^3.0.3",
         "graphql": "^14.1.1",
         "graphql-tag": "^2.10.1",

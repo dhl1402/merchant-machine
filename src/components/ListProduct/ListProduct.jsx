@@ -105,7 +105,7 @@ const ListProduct = ({ className }) => {
       </DragScroll>
       {selectedProduct && (
         <div className="text-center">
-          <h1 className="mb-4 text-light">QR CODE</h1>
+          <h1 className="mb-4 text-light">QR CODEEEEE</h1>
           <ResizeableQRCode
             ref={qrCode}
             getSize={getQRCodeSize}
