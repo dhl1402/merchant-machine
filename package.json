@@ -40,23 +40,20 @@
             "artifactName": "ACheckin Linux",
             "systemIntegration": "doNotAsk",
             "publish": {
-                "provider": "github",
-                "private": true
+                "provider": "github"
             }
         },
         "mac": {
-            "target": "dmg",
+            "target": "zip",
             "publish": {
-                "provider": "github",
-                "private": true
+                "provider": "github"
             }
         },
         "nsis": {
             "artifactName": "ACheckin.${ext}",
             "createDesktopShortcut": "always",
             "publish": {
-                "provider": "github",
-                "private": true
+                "provider": "github"
             }
         },
         "compression": "store"
