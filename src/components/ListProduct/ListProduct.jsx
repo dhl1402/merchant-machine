@@ -92,7 +92,7 @@ const ListProduct = ({ className }) => {
         />
         <div className="product-title">
           <h5 className="text-light mb-1">{p.name}</h5>
-          <div className="text-light">{p.price}VNĐ</div>
+          <div className="text-light">{p.price}</div>
         </div>
       </div>
     ));

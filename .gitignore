@@ -3,3 +3,5 @@ out
 build
 dist
 package
+
+release.sh

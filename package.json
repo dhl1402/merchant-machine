@@ -8,13 +8,13 @@
         "analyze": "source-map-explorer build/static/js/main.*",
         "lint": "eslint src --color",
         "build-react": "react-app-rewired build",
-        "prevbuild-react": "rm -rf build && rm-rf dist",
+        "prevbuild-react": "rm -rf build",
         "start-react": "react-app-rewired start",
         "start": "concurrently \"BROWSER=none yarn start-react\" \"wait-on http://localhost:3000 && electron .\"",
         "dist": "yarn build-react && electron-builder -c.extraMetadata.main=src/main/main.js",
         "dist-appimage": "yarn build-react && electron-builder -c.extraMetadata.main=src/main/main.js --linux appImage",
         "dist-nsis": "yarn build-react && electron-builder -c.extraMetadata.main=src/main/main.js --win --ia32 nsis",
-        "release": "GH_TOKEN=eed28f94a4c8a8d197d49b28af6951c3c253022a build -c.extraMetadata.main=src/main/main.js"
+        "release": "build -c.extraMetadata.main=src/main/main.js"
     },
     "keywords": [],
     "author": "DHL",
@@ -92,6 +92,7 @@
         "react-icons": "^3.5.0",
         "react-scripts": "2.1.8",
         "react-spinners": "^0.5.3",
+        "react-toastify": "^5.0.0-rc.3",
         "socket.io-client": "^2.2.0",
         "yup": "^0.26.10"
     },

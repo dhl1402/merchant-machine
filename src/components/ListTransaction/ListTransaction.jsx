@@ -6,6 +6,7 @@ import { FiRefreshCcw } from 'react-icons/fi';
 import { PulseLoader } from 'react-spinners';
 import classNames from 'classnames';
 import get from 'lodash.get';
+import { toast } from 'react-toastify';
 
 import { useTransactionsQuery, useDoneTransactionMutation } from '@/apollo';
 import { INIT, WAITING, REFUNDED } from '@/constants/transactionStatus';
@@ -24,7 +25,7 @@ const ListTransaction = ({ className }) => {
   const transactions = data.data || [];
 
   const [doneTransaction] = useDoneTransactionMutation({
-    onCompleted: () => alert('done'),
+    onCompleted: () => toast('Giao dịch đã được hoàn tất'),
     onError: e => alert(e.message),
   });
 
@@ -126,11 +127,13 @@ const ListTransaction = ({ className }) => {
             </ListGroup.Item>
           </ListGroup>
         </Card.Body>
-        <Card.Footer className="text-right">
-          <Button disabled={processingTrans.includes(t.id)} onClick={() => onDoneTransaction(t)}>
-            Hoàn thành
-          </Button>
-        </Card.Footer>
+        {(t.status === INIT || t.status === WAITING) && (
+          <Card.Footer className="text-right">
+            <Button disabled={processingTrans.includes(t.id)} onClick={() => onDoneTransaction(t)}>
+              Hoàn thành
+            </Button>
+          </Card.Footer>
+        )}
       </Card>
     ));
   };

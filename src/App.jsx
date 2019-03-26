@@ -33,6 +33,8 @@ const App = () => {
       forceNew: true,
       timeout: 5000,
     });
+
+    socket.current.on('confirm_transaction', d => console.log(d));
   }, []);
 
   if (loading) {
