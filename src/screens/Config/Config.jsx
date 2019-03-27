@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import * as yup from 'yup';
+import classNames from 'classnames';
 
 import { CONFIG_SAVE_PATH } from '@/constants/configs';
 
@@ -53,7 +54,7 @@ const Config = () => {
   };
 
   return (
-    <div className={styles.Config}>
+    <div className={classNames(styles.Config, 'root-layout')}>
       <img className="logo" src={logo} alt="logo" />
       <Button onClick={selectFile}>Vui lòng chọn file cấu hình</Button>
     </div>

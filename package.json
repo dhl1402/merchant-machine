@@ -44,7 +44,6 @@
             }
         },
         "mac": {
-            "target": "zip",
             "publish": {
                 "provider": "github"
             }

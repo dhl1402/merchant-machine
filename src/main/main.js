@@ -1,8 +1,6 @@
 const { app, BrowserWindow, globalShortcut } = require('electron');
 const fs = require('fs');
 const isDev = require('electron-is-dev');
-const { autoUpdater } = require('electron-updater');
-const log = require('electron-log');
 
 const { CONFIG_SAVE_PATH } = require('../constants/configs');
 
@@ -11,12 +9,6 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line
   // eslint-disable-line global-require
   app.quit();
 }
-
-const checkForUpdate = () => {
-  log.transports.file.level = 'debug';
-  autoUpdater.logger = log;
-  autoUpdater.checkForUpdatesAndNotify();
-};
 
 const registerShortcut = () => {
   // restart and remove config.json
@@ -49,6 +41,9 @@ const createWindow = () => {
     mainWindow.loadURL(`file://${__dirname}/../../build/index.html`);
   }
 
+  // eslint-disable-next-line
+  require('./autoUpdater')(mainWindow);
+
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows
@@ -64,7 +59,6 @@ const createWindow = () => {
 app.on('ready', () => {
   createWindow();
   registerShortcut();
-  checkForUpdate();
 });
 
 // Quit when all windows are closed.
