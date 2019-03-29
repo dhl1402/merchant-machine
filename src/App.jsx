@@ -104,15 +104,11 @@ const App = () => {
       sendAppInfo();
     });
 
-    ipcRenderer.on('error', () => {
+    ipcRenderer.on('update_error', () => {
       appState.current = APP_STATE.UPDATE_ERROR;
       sendAppInfo();
     });
   }, []);
-
-  useEffect(() => {
-    sendAppInfo();
-  }, [appState]);
 
   if (loading) {
     return <Loading />;

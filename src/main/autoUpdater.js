@@ -31,6 +31,6 @@ module.exports = (mainWindow) => {
   });
 
   autoUpdater.on('error', (data) => {
-    mainWindow.webContents.send('error', data);
+    mainWindow.webContents.send('update_error', data);
   });
 };
