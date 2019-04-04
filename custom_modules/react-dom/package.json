@@ -1,0 +1,83 @@
+{
+  "_from": "react-dom@0.0.0-f22621f88",
+  "_id": "react-dom@0.0.0-f22621f88",
+  "_inBundle": false,
+  "_integrity": "sha512-SJolaiF/KiTiD06IZ5zPHky7hnbLnwJeW1WydFnT32vdSSaqhmcFNLv1Iwc1Q7A3im8UZfhfNPduCbQurL/43A==",
+  "_location": "/react-dom",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "react-dom@0.0.0-f22621f88",
+    "name": "react-dom",
+    "escapedName": "react-dom",
+    "rawSpec": "0.0.0-f22621f88",
+    "saveSpec": null,
+    "fetchSpec": "0.0.0-f22621f88"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-dom/-/react-dom-0.0.0-f22621f88.tgz",
+  "_shasum": "13e6717171f336833baf2f33066735cf06f86f79",
+  "_spec": "react-dom@0.0.0-f22621f88",
+  "_where": "/Users/gaearon/p/react/build/node_modules",
+  "browser": {
+    "./server.js": "./server.browser.js",
+    "./unstable-fizz.js": "./unstable-fizz.browser.js"
+  },
+  "browserify": {
+    "transform": [
+      "loose-envify"
+    ]
+  },
+  "bugs": {
+    "url": "https://github.com/facebook/react/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "loose-envify": "^1.1.0",
+    "object-assign": "^4.1.1",
+    "prop-types": "^15.6.2",
+    "scheduler": "^0.13.0-alpha.0"
+  },
+  "deprecated": false,
+  "description": "React package for working with the DOM.",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "build-info.json",
+    "index.js",
+    "profiling.js",
+    "server.js",
+    "server.browser.js",
+    "server.node.js",
+    "test-utils.js",
+    "unstable-fire.js",
+    "unstable-fizz.js",
+    "unstable-fizz.browser.js",
+    "unstable-fizz.node.js",
+    "unstable-native-dependencies.js",
+    "cjs/",
+    "umd/"
+  ],
+  "homepage": "https://reactjs.org/",
+  "keywords": [
+    "react"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "react-dom",
+  "peerDependencies": {
+    "react": "^16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facebook/react.git"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "16.8.0-alpha.0"
+}

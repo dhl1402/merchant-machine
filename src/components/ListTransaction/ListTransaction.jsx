@@ -9,7 +9,7 @@ import get from 'lodash.get';
 import { toast } from 'react-toastify';
 
 import { useTransactionsQuery, useDoneTransactionMutation } from '@/apollo';
-import { INIT, WAITING, REFUNDED } from '@/constants/transactionStatus';
+import { INIT, WAITING, REFUNDED, CONFIRM } from '@/constants/transactionStatus';
 import { LOADING, FETCH_MORE } from '@/constants/apolloNetworkStatus';
 
 import styles from './ListTransactions.module.scss';
@@ -19,7 +19,7 @@ const ListTransaction = ({ className }) => {
   const { data, loading, error, networkStatus, refetch, hasMore, fetchMore } = useTransactionsQuery(
     {
       offset: 0,
-      limit: 20,
+      limit: 6,
     },
   );
   const transactions = data.data || [];
@@ -39,7 +39,7 @@ const ListTransaction = ({ className }) => {
   };
 
   const rendeStatusBadge = (status) => {
-    if (status === INIT || status === WAITING) {
+    if (status === INIT || status === WAITING || status === CONFIRM) {
       return (
         <Badge pill variant="secondary">
           Đang chờ
@@ -127,7 +127,7 @@ const ListTransaction = ({ className }) => {
             </ListGroup.Item>
           </ListGroup>
         </Card.Body>
-        {(t.status === INIT || t.status === WAITING) && (
+        {(t.status === CONFIRM) && (
           <Card.Footer className="text-right">
             <Button disabled={processingTrans.includes(t.id)} onClick={() => onDoneTransaction(t)}>
               Hoàn thành

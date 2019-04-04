@@ -5,7 +5,7 @@ import { Main, Config, Loading } from '@/screens';
 
 import { CONFIG } from '@/constants/configs';
 import * as APP_STATE from '@/constants/appState';
-import { useInitMutation, useRefreshMutation } from '@/apollo';
+import { useInitMutation, useRefreshMutation, usePollTransactionQuery } from '@/apollo';
 
 const packageJson = require('../package.json');
 
@@ -20,6 +20,8 @@ const App = () => {
   const sendInfoInterval = useRef();
   const [init, { loading }] = useInitMutation();
   const [refreshToken] = useRefreshMutation();
+
+  const [pollTransaction] = usePollTransactionQuery();
 
   const sendAppInfo = (info = {}) => {
     const appMetrics = app.getAppMetrics();
@@ -64,7 +66,7 @@ const App = () => {
       sendInfoInterval.current = setInterval(() => sendAppInfo, 10000);
     });
 
-    socket.current.on('confirm_transaction', d => console.log(d));
+    socket.current.on('confirm_transaction', ({ transaction_id }) => pollTransaction(transaction_id));
 
     socket.current.on('check-update', () => {
       ipcRenderer.send('check-update');

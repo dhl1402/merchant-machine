@@ -5,6 +5,7 @@
     "description": "Merchant machine",
     "main": "src/main/main.js",
     "scripts": {
+      "postinstall": "cp -r custom_modules/* node_modules",
         "analyze": "source-map-explorer build/static/js/main.*",
         "lint": "eslint src --color",
         "build-react": "react-app-rewired build",
